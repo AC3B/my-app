@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #61dafb;
+  text-decoration: none;
+}
+
+section {
+  padding: 40px;
+  height: 100vh;
+  scroll-margin-top: 6rem;
+}
+
+section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+footer {
+  background-color: #282c34;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
