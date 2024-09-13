@@ -1,46 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import AboutPage from './Pages/Aboutpage';
-import ContactPage from './Pages/Contactpage';
+import AboutPage from './Pages/AboutPage';
+import ContactPage from './Pages/ContactPage';
 import ServicesPage from './Pages/ServicesPage';
+import LogoIcon from './components/LogoIcon';
+import HomePage from './Pages/HomePage';
+import ResponsiveNav from './components/ResponsiveNav';
+import { createTheme, ThemeProvider } from '@mui/material';
+function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
 
-function App() { 
-
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    section.scrollIntoView({ behavior: 'smooth' });
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
+  const mainTheme = createTheme({
+    typography: {
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'Lato',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
+    }
+  });
+
+
 
   return (
+    <ThemeProvider theme={mainTheme}>
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to My Website</h1>
-        <nav>
-          <ul>
-            <li>
-              <button onClick={() => scrollToSection('about')}>About</button>
-            </li>
-            <li>
-              <button onClick={() => scrollToSection('services')}>Services</button>
-            </li>
-            <li>
-              <button onClick={() => scrollToSection('contact')}>Contact</button>
-            </li>
-          </ul>
-        </nav>
-      </header>
 
+        <LogoIcon type='logo'/>
+        <button className="menu-toggle" onClick={toggleMenu}>
+          <LogoIcon type='nav-bar' />
+        </button>
+        <div className='web-nav'>
+          <ResponsiveNav setMenuOpen={setMenuOpen} />
+        </div>
+        <div className={`menu ${menuOpen ? 'open' : ''}`}>
+          <ResponsiveNav setMenuOpen={setMenuOpen} />
+        </div>
+      </header>
+      <HomePage />
       <AboutPage />
       <ServicesPage />
       <ContactPage />
-
-      <footer>
-        <p>&copy; 2024 My Website. All rights reserved.</p>
-      </footer>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 }
 
 export default App;
-

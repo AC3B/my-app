@@ -1,49 +1,117 @@
 .App {
-  text-align: center;
-  font-family: Arial, sans-serif;
+	text-align: center;
+	font-family: Arial, sans-serif;
 }
 
 .App-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-  position: sticky;
-  top: 0;
+	background-color: white;
+	height: 58px;
+	color: white;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
 }
 
-nav ul {
-  list-style-type: none;
-  padding: 0;
-
+.web-nav {
+	display: flex;
 }
-
-nav ul li {
-  display: inline;
-  margin: 0 10px;
+.menu {
+	display: none;
 }
-
-nav ul li a {
-  color: #61dafb;
-  text-decoration: none;
+.menu-toggle {
+	display: none;
 }
-
 section {
-  padding: 40px;
-  height: 100vh;
-  scroll-margin-top: 6rem;
+	height: 100vh;
+	overflow: hidden;
+	padding: 2%;
 }
 
 section h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
+	font-size: 2em;
+	margin-bottom: 20px;
 }
 
 footer {
-  background-color: #282c34;
-  color: white;
-  padding: 10px;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+	background-color: #282c34;
+	color: white;
+	padding: 10px;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+#home{
+	display: flex;
+
+	background-image: url(../src/assets/Home.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: right;
 }
 
+.home-content{
+	display: flex;
+	flex-direction: column;
+	padding-left: 10%;
+	height: 100%;
+	width: 45%;
+	justify-content: center;
+	align-items: start;
+
+}
+.home-content h3{
+	font-family: "Barlow Condensed", sans-serif;
+	text-align: left;
+	font-weight: 800;
+    font-size: 3rem;
+	margin: 0;
+    line-height: 3.5rem;
+    color: #2A283F;
+}
+.home-content p{
+	font-family: "Inconsolata", monospace;
+	font-size: 1.75rem;
+    line-height: 2rem;
+    color: #54507d;
+}
+@media screen and (max-width: 600px) {
+	.web-nav {
+		display: none;
+	}
+
+	.menu-toggle {
+		display: block;
+		background: none;
+		border: none;
+		font-size: 24px;
+		cursor: pointer;
+	}
+	.menu-toggle:hover {
+		color: #00d8b9;
+	}
+	.menu {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 100%;
+		right: 0;
+		width: 100%;
+		background-color: white;
+		max-height: 0; /* Menu collapsed */
+		overflow: hidden; /* Prevents content from overflowing */
+		transition: max-height 0.7s ease; /* Transition for smooth collapse */
+	}
+
+	.menu.open {
+		max-height: 500px; /* Menu fully expanded */
+		width: 100%;
+	}
+	.App-header {
+		justify-content: space-between;
+	}
+}
